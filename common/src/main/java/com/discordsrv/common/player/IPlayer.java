@@ -122,4 +122,19 @@ public interface IPlayer extends DiscordSRVPlayer, IOfflinePlayer, ICommandSende
         return PermissionUtil.getSuffix(discordSRV(), uniqueId());
     }
 
+    @Placeholder("playercount")
+    default String getPlayerCount() {
+        return "invalid";
+    }
+
+    @Placeholder("playercountnew")
+    default String getPlayerCountNew() {
+        return "invalid";
+    }
+
+    @Placeholder("maxplayercount")
+    default String getMaxPlayerCount() {
+        return "invalid";
+    }
+
 }
