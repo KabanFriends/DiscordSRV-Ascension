@@ -83,4 +83,19 @@ public class BukkitPlayer extends BukkitCommandSender implements IPlayer {
     public @NotNull Identity identity() {
         return identity;
     }
+
+    @Override
+    public String getPlayerCount() {
+        return String.valueOf(discordSRV.server().getOnlinePlayers().size());
+    }
+
+    @Override
+    public String getPlayerCountNew() {
+        return String.valueOf(discordSRV.server().getOnlinePlayers().size() - 1);
+    }
+
+    @Override
+    public String getMaxPlayerCount() {
+        return String.valueOf(discordSRV.server().getMaxPlayers());
+    }
 }
