@@ -1,7 +1,7 @@
 // Relocations
 [
         // JDA, WS
-        'net.dv8tion.jda',
+        //'net.dv8tion.jda',
         'com.iwebpp',
         'com.neovisionaries.ws',
 
