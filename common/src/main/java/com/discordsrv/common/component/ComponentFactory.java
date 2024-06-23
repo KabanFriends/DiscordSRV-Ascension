@@ -93,7 +93,13 @@ public class ComponentFactory implements MinecraftComponentFactory {
                 component.arguments()
                         .stream()
                         // Prevent infinite loop here by using the default PlainTextSerializer
-                        .map(argument -> PlainTextComponentSerializer.plainText().serialize(argument.asComponent()))
+                        .map(argument -> {
+                            Component component1 = argument.asComponent();
+                            if (component1 instanceof TranslatableComponent) {
+                                return provideTranslation((TranslatableComponent) component1);
+                            }
+                            return PlainTextComponentSerializer.plainText().serialize(argument.asComponent());
+                        })
                         .toArray(Object[]::new)
         );
     }
