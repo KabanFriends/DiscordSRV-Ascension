@@ -186,6 +186,7 @@ public class BukkitDiscordSRV extends ServerDiscordSRV<DiscordSRVBukkitBootstrap
         // Adventure related stuff
         this.audiences = BukkitAudiences.create(bootstrap.getPlugin());
         this.translationLoader = new BukkitTranslationLoader(this);
+        this.translationLoader.reload();
 
         // Command handler
         commandHandler = AbstractBukkitCommandHandler.get(this);

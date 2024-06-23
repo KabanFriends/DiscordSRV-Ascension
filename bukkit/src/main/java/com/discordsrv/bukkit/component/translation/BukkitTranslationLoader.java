@@ -71,12 +71,7 @@ public class BukkitTranslationLoader {
         try (Stream<Path> paths = Files.list(folder)) {
             paths.forEach(path -> {
                 String fileName = path.getFileName().toString();
-                int lastDot = fileName.lastIndexOf("\\.");
-                String extension = lastDot == -1 ? null : fileName.substring(lastDot + 1);
-                if (extension == null || !(extension.equals("json") || extension.equals("lang"))) {
-                    discordSRV.logger().warning("Unexpected file in game_languages: " + fileName);
-                    return;
-                }
+                int lastDot = fileName.lastIndexOf(".");
 
                 try {
                     String language = fileName.substring(0, lastDot);
@@ -84,9 +79,9 @@ public class BukkitTranslationLoader {
                     URL url = path.toUri().toURL();
 
                     Map<String, Translation> translations = null;
-                    if (path.endsWith(".json")) {
+                    if (path.toString().endsWith(".json")) {
                         translations = getFromJson(url);
-                    } else if (path.endsWith(".lang")) {
+                    } else if (path.toString().endsWith(".lang")) {
                         translations = getFromProperties(url);
                     }
                     if (translations != null && !translations.isEmpty()) {
